@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>デザイン案2: ビジネスプロフェッショナル - 確定申告アプリ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: #F3F4F6;
+            color: #1F2937;
+            line-height: 1.6;
+        }
+        
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background: linear-gradient(180deg, #1E3A8A 0%, #1E40AF 100%);
+            padding: 32px 20px;
+            color: #FFFFFF;
+        }
+        
+        .logo {
+            font-family: 'Merriweather', serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: #F59E0B;
+            margin-bottom: 40px;
+            padding: 0 12px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: #F59E0B;
+            border-radius: 6px;
+            margin-right: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1E3A8A;
+            font-weight: 700;
+            font-size: 18px;
+        }
+        
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 14px 12px;
+            margin-bottom: 6px;
+            border-radius: 6px;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.2s;
+            font-size: 15px;
+            font-weight: 500;
+            border: 1px solid transparent;
+        }
+        
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #FFFFFF;
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .nav-item.active {
+            background: rgba(245, 158, 11, 0.15);
+            color: #F59E0B;
+            border-color: #F59E0B;
+        }
+        
+        .nav-icon {
+            width: 22px;
+            height: 22px;
+            margin-right: 14px;
+        }
+        
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            background: #F3F4F6;
+            padding: 40px;
+        }
+        
+        .header {
+            margin-bottom: 36px;
+            padding-bottom: 24px;
+            border-bottom: 2px solid #E5E7EB;
+        }
+        
+        .header h1 {
+            font-family: 'Merriweather', serif;
+            font-size: 34px;
+            font-weight: 700;
+            color: #1E3A8A;
+            margin-bottom: 8px;
+        }
+        
+        .header p {
+            font-size: 16px;
+            color: #6B7280;
+        }
+        
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            margin-bottom: 36px;
+        }
+        
+        .stat-card {
+            background: #FFFFFF;
+            border-radius: 8px;
+            padding: 28px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+            border: 1px solid #E5E7EB;
+            transition: all 0.2s;
+        }
+        
+        .stat-card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+            border-color: #F59E0B;
+        }
+        
+        .stat-label {
+            font-size: 13px;
+            color: #6B7280;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+        
+        .stat-value {
+            font-family: 'Merriweather', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: #1E3A8A;
+        }
+        
+        .stat-value.positive {
+            color: #059669;
+        }
+        
+        .stat-value.negative {
+            color: #DC2626;
+        }
+        
+        /* Card */
+        .card {
+            background: #FFFFFF;
+            border-radius: 8px;
+            padding: 28px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+            border: 1px solid #E5E7EB;
+            margin-bottom: 24px;
+        }
+        
+        .card-title {
+            font-family: 'Merriweather', serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: #1E3A8A;
+            margin-bottom: 20px;
+        }
+        
+        /* Button */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: #F59E0B;
+            color: #1E3A8A;
+            border-color: #F59E0B;
+        }
+        
+        .btn-primary:hover {
+            background: #D97706;
+            border-color: #D97706;
+            box-shadow: 0 4px 8px rgba(245, 158, 11, 0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: #1E3A8A;
+            border-color: #1E3A8A;
+        }
+        
+        .btn-secondary:hover {
+            background: #1E3A8A;
+            color: #FFFFFF;
+        }
+        
+        /* Table */
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .table th {
+            text-align: left;
+            padding: 14px 12px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #1E3A8A;
+            border-bottom: 2px solid #1E3A8A;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .table td {
+            padding: 18px 12px;
+            font-size: 15px;
+            color: #374151;
+            border-bottom: 1px solid #E5E7EB;
+        }
+        
+        .table tr:hover {
+            background: #F9FAFB;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 5px 14px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        
+        .badge-blue {
+            background: #1E3A8A;
+            color: #FFFFFF;
+        }
+        
+        .badge-gold {
+            background: #F59E0B;
+            color: #1E3A8A;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">税</div>
+                確定申告アプリ
+            </div>
+            <nav>
+                <a href="#" class="nav-item active">
+                    <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                    </svg>
+                    ダッシュボード
+                </a>
+                <a href="#" class="nav-item">
+                    <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    売上管理
+                </a>
+                <a href="#" class="nav-item">
+                    <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                    </svg>
+                    経費管理
+                </a>
+                <a href="#" class="nav-item">
+                    <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    </svg>
+                    レシートスキャン
+                </a>
+                <a href="#" class="nav-item">
+                    <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                    </svg>
+                    帳簿生成
+                </a>
+            </nav>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <h1>2025年 確定申告ダッシュボード</h1>
+                <p>売上と経費の概要を確認できます</p>
+            </div>
+            
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">11月売上</div>
+                    <div class="stat-value">¥0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">11月経費</div>
+                    <div class="stat-value negative">¥317</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">11月利益</div>
+                    <div class="stat-value negative">¥-317</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">利益率</div>
+                    <div class="stat-value">0%</div>
+                </div>
+            </div>
+            
+            <!-- Recent Expenses -->
+            <div class="card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <h2 class="card-title" style="margin: 0;">最近の経費</h2>
+                    <button class="btn btn-primary">経費を追加</button>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>日付</th>
+                            <th>摘要</th>
+                            <th>経費区分</th>
+                            <th style="text-align: right;">金額</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2025/11/29</td>
+                            <td>Test expense</td>
+                            <td><span class="badge badge-blue">消耗品</span></td>
+                            <td style="text-align: right; font-weight: 600;">¥5,000</td>
+                        </tr>
+                        <tr>
+                            <td>2025/11/29</td>
+                            <td>Test receipt scan expense</td>
+                            <td><span class="badge badge-blue">消耗品</span></td>
+                            <td style="text-align: right; font-weight: 600;">¥1,500</td>
+                        </tr>
+                        <tr>
+                            <td>2025/11/28</td>
+                            <td>レシート付き経費</td>
+                            <td><span class="badge badge-gold">消耗品</span></td>
+                            <td style="text-align: right; font-weight: 600;">¥2,000</td>
+                        </tr>
+                        <tr>
+                            <td>2025/11/28</td>
+                            <td>テスト経費</td>
+                            <td><span class="badge badge-blue">消耗品</span></td>
+                            <td style="text-align: right; font-weight: 600;">¥1,000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

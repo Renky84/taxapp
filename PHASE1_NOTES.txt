@@ -1,0 +1,17 @@
+Phase 1 design refresh applied:
+- Added filing-mode theme switch (white / blue)
+- Reworked dashboard shell/sidebar/header
+- Reworked home dashboard screen
+- Updated global theme tokens
+
+Files changed:
+- client/src/App.tsx
+- client/src/contexts/ThemeContext.tsx
+- client/src/components/TaxModeToggle.tsx
+- client/src/components/DashboardLayout.tsx
+- client/src/pages/Home.tsx
+- client/src/index.css
+
+Build verification note:
+- In this container, Vite config dependency resolution is currently failing before app build completes.
+- The app code was updated, but full browser build verification still needs the project's package manager/dependency environment cleaned up.
